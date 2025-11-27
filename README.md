@@ -1,6 +1,6 @@
-# 🎄Advent of Code (2024)
+# 🎄Advent of Code (2025)
 
-Welcome to [Advent of Code 2024](https://adventofcode.com/).
+Welcome to [Advent of Code 2025](https://adventofcode.com/).
 
 ## Getting started
 
