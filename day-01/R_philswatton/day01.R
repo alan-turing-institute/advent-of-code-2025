@@ -1,10 +1,8 @@
 inputs <- readLines("input.txt")
 
-get_sign <- function(string) if (string == "L") return(-1) else return(1)
-
 get_move <- function(input) {
-  move_strings <- substring(input, c(1,2), c(1, nchar(input)))
-  return(get_sign(move_strings[1]) * as.numeric(move_strings[2]))
+  move <- substring(input, c(1,2), c(1, nchar(input)))
+  if (move[1] == "L") return(-as.numeric(move[2])) else return(as.numeric(move[2]))
 }
 
 rotate_dial <- function(position, move) (position + move) %% 100
