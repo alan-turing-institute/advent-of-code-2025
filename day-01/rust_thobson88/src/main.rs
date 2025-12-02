@@ -45,7 +45,6 @@ fn main() {
     let passwd = positions
         .windows(2)
         .zip(rotations)
-        .map(|x| x)
         .filter(|(w, r)| {
             w[1] == 0
                 || w[0] == w[1]
