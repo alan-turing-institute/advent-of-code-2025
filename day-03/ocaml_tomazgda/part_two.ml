@@ -2,13 +2,12 @@
 
 (* 1. find the largest number in the first (n - 12) digits, and its location
    2. find the next largest number to the right of the location of the first
-   3. repeat this process for 12 numbers
-*)
+   3. repeat this process for 12 numbers *)
 
 let all_but_last n bank : int list =
   List.take (List.length bank - n + 1) bank
 
-(* find largest number in the first 12 positions of bank and its location *)
+(* returns highest joltage battery and its position *)
 let choose_max batteries : int * int =
   let indices = List.init (List.length batteries) (fun x -> x) in
   List.fold_left2
@@ -21,8 +20,7 @@ let choose_max batteries : int * int =
     batteries
     indices
 
-(* that's our entry point *)
-
+(* compute the maximum joltage a bank can form with 12 batteries *)
 let build_max_joltage bank : int =
   let rec aux acc batteries length =
     if length = 0 then
