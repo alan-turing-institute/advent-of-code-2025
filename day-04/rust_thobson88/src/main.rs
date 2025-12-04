@@ -25,11 +25,7 @@ fn main() {
             .filter(|(c, r)| data[*r][*c])
             .filter(|(c, r)| count_neighbours(&data, *c, *r, rows, cols) < 4usize)
             .collect();
-        let count = remove
-            .iter()
-            .map(|(c, r)| count_neighbours(&data, *c, *r, rows, cols))
-            .filter(|count| *count < 4usize)
-            .count();
+        let count = remove.iter().count();
         for (i, j) in remove {
             data[j][i] = false;
         }
@@ -60,8 +56,7 @@ fn neighbours(c: usize, r: usize, rows: usize, cols: usize) -> Vec<(usize, usize
 fn adj(i: usize, lim: usize) -> impl Iterator<Item = usize> {
     (-1..2)
         .into_iter()
-        .map(move |x| x + i as isize)
-        .flat_map(|x| usize::try_from(x))
+        .flat_map(move |x| usize::try_from(x + i as isize))
         .filter(move |x| *x < lim)
 }
 
