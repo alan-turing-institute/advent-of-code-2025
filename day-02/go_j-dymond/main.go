@@ -10,7 +10,6 @@ import (
 func LoadInput(path string, split_str string) []string {
 	content, err := os.ReadFile(path)
 	if err != nil {
-		//Do something
 		panic(err)
 	}
 	lines := strings.Split(string(content), split_str)
