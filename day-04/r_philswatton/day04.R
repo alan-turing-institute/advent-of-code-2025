@@ -14,11 +14,11 @@ sum_neighbours <- function(m) {
 find_update_grid <- function(input, iter=1, out=c(0,0)) {
   m <- (input == "@") * 1
   accessible <- sum_neighbours(pad(m)) < 4 & m == 1
+  if (!any(accessible)) return(out)
   count <- sum(accessible)
   indices <- which(accessible, arr.ind=TRUE)
-  if (!any(accessible)) return(out)
   if (iter == 1) out <- out + count
-  if (iter > 1) out[2] <- out[2] + count
+  else out[2] <- out[2] + count
   if (count > 1) input[indices] <- "." else input[indices[1], indices[2]] <- "."
   Tailcall(find_update_grid, input, iter+1, out)
 }
