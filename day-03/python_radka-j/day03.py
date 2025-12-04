@@ -31,13 +31,14 @@ for bank in lines:
     vals = list(bank)
 
     # similar to above but search for 12 digits
+    # use two pointers to scan list and search for max vals within range
     best_vals = []
     start_idx, end_idx = 0, len(vals) - 11
     for i in range(12):
         max_val = max(vals[start_idx : end_idx + i])
         best_vals.append(max_val)
-        max_val_idx = start_idx + vals[start_idx : end_idx + i].index(max_val)
-        start_idx = max_val_idx + 1
+        max_val_idx = vals[start_idx : end_idx + i].index(max_val)
+        start_idx += max_val_idx + 1
     tot_joltage += int("".join(best_vals))
 
 print("part 2: ", tot_joltage)
