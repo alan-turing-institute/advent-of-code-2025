@@ -28,10 +28,10 @@ splitter_inds[,1] <- splitter_inds[,1] - 1
 part1 <- sum(out[splitter_inds] > 0)
 
 # Part 2: count N beams at the end
-part2 <- out[nrow(out),] |> sum() |> as.character()
+part2 <- out[nrow(out),] |> sum()
 
 # Out
-cat("Part 1: ", as.character(part1), "\nPart 2: ", as.character(part2))
+cat("Part 1: ", part1, "\nPart 2: ", as.character(part2))
 
 
 
