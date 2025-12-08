@@ -35,7 +35,7 @@ part1 <- iterate_group(as.list(1:nrow(input)), o, 1000) |>
   {\(x) prod(x[1:3])}()
 
 # Part 2
-part2 <- input[iterate_group(as.list(1:nrow(input)), o)] |>
+part2 <- input[iterate_group(as.list(1:nrow(input)), o), 1] |>
   as.numeric() |>
   prod()
 
