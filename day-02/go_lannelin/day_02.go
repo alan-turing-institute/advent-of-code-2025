@@ -82,8 +82,6 @@ func chunksAllMatch(chunks []string) bool {
 }
 
 func Part1(input string) int {
-	parseInput(input)
-	fmt.Println("parsed input")
 	total := 0
 	for _, productID := range parseInput(input) {
 		s := strconv.Itoa(productID)
@@ -100,8 +98,6 @@ func Part1(input string) int {
 }
 
 func Part2(input string) int {
-	parseInput(input)
-	fmt.Println("parsed input")
 	total := 0
 	for _, productID := range parseInput(input) {
 		s := strconv.Itoa(productID)
