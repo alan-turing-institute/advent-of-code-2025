@@ -13,8 +13,6 @@
   (for/sum ([r (in-list (make-i-list *ranges*))])
     (+ (- (cadr r) (car r)) 1))
 
-
-
   )
 
 
@@ -30,7 +28,10 @@
 (define (make-i-list is)
   (for/fold ([ilist '()])
             ([i (in-list is)])
-    (insert i is)))
+;    (println (format "Inserting ~a" i))
+    (let ([new (insert i ilist)])
+;      (println new)
+      new)))
 
 ;; insert : interval? i-list? -> i-list?
 ;;
