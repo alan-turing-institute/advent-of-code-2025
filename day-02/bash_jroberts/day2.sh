@@ -22,6 +22,7 @@ for range in "${ranges[@]}"; do
                 for ((j=i+digits_per_part; j<n_digits; j+=digits_per_part)); do
                     next_part=${digit:j:digits_per_part}
 
+                    # 10# to force base 10 interpretation to avoid issues with leading zeros
                     if [[ (10#$first_part -ne 10#$next_part) || (10#$first_part -eq 0) ]]; then
                         all_match=false
                         break 2
