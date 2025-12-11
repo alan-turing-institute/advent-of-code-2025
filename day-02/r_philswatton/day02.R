@@ -10,9 +10,11 @@ check_invalid <- function(id, n_repeats) {
 }
 
 get_ids_to_add <- function(id) {
-  if (check_invalid(id, 2)) return(c(id, id))
-  if (nchar(id) > 2) {
-    for (n_repeat in 3:nchar(id)) if(check_invalid(id, n_repeat)) return(c(0, id))
+  nc <- nchar(id)
+  if ((nc %% 2) == 0)  if (check_invalid(id, 2)) return(c(id, id))
+  if (nc > 2) {
+    repeats <- (3:nc)[(nc %% 3:nc) == 0]
+    for (n_repeat in repeats) if(check_invalid(id, n_repeat)) return(c(0, id))
   }
   return(c(0,0))
 }
