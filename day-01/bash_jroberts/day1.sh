@@ -1,48 +1,48 @@
 
-CURRENT=50
+current=50
 
-PART1_COUNT=0
-PART2_COUNT=0
+part1_count=0
+part2_count=0
 
 while IFS= read -r line; do
 
-    # Direction is first character, steps is the rest
-    DIRECTION=${line:0:1}
-    STEPS=${line:1}
+    # direction is first character, steps is the rest
+    direction=${line:0:1}
+    steps=${line:1}
 
     # Separate steps into hundreds and units, e.g. 256 -> 2, 56
-    HUNDREDS=$((STEPS / 100))
-    UNITS=$((STEPS % 100))
-    PREVIOUS=$CURRENT
+    hundreds=$((steps / 100))
+    units=$((steps % 100))
+    previous=$current
 
     # Increment the current position using the units only
-    if [[ $DIRECTION == "L" ]]; then
-        CURRENT=$((CURRENT - UNITS))
-    elif [[ $DIRECTION == "R" ]]; then
-        CURRENT=$((CURRENT + UNITS))
+    if [[ $direction == "L" ]]; then
+        current=$((current - units))
+    elif [[ $direction == "R" ]]; then
+        current=$((current + units))
     fi
 
     # Check whether the units caused us to point at 0
-    if [[ PREVIOUS -ne 0 && UNITS -gt 0 && ($CURRENT -le 0 || $CURRENT -ge 100) ]]; then
-        PART2_COUNT=$((PART2_COUNT + 1))
+    if [[ previous -ne 0 && units -gt 0 && ($current -le 0 || $current -ge 100) ]]; then
+        part2_count=$((part2_count + 1))
     fi
 
     # Add the remaining passes by 0 due to hundreds
-    PART2_COUNT=$((PART2_COUNT + HUNDREDS))
+    part2_count=$((part2_count + hundreds))
 
     # Reset current to be within 0-99
-    CURRENT=$((CURRENT % 100))
+    current=$((current % 100))
     # deal with negative modulo allowed by bash
-    if [[ $CURRENT -lt 0 ]]; then
-        CURRENT=$((CURRENT + 100))
+    if [[ $current -lt 0 ]]; then
+        current=$((current + 100))
     fi
 
     # Check whether pointing at 0 at the end of the step
-    if [[ $CURRENT -eq 0 ]]; then
-        PART1_COUNT=$((PART1_COUNT + 1))
+    if [[ $current -eq 0 ]]; then
+        part1_count=$((part1_count + 1))
     fi
 
 done < input.txt
 
-echo "Part 1:" $PART1_COUNT
-echo "Part 2:" $PART2_COUNT
+echo "Part 1:" $part1_count
+echo "Part 2:" $part2_count
