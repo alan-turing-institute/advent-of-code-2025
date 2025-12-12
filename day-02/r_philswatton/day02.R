@@ -13,7 +13,7 @@ get_ids_to_add <- function(id) {
   nc <- nchar(id)
   if ((nc %% 2) == 0)  if (check_invalid(id, 2)) return(c(id, id))
   if (nc > 2) {
-    repeats <- (3:nc)[(nc %% 3:nc) == 0]
+    repeats <- c(3,5)[(nc %% c(3,5)) == 0] #only need to check primes that the number is divisible by, and longest input is length 10
     for (n_repeat in repeats) if(check_invalid(id, n_repeat)) return(c(0, id))
   }
   return(c(0,0))
@@ -26,7 +26,5 @@ solve_day_2 <- function(id_range) {
 
 solution <- lapply(input, solve_day_2) |> Reduce(`+`, x=_)
 cat("Part 1: ", solution[1], "\nPart 2: ", solution[2])
-
-
 
 
